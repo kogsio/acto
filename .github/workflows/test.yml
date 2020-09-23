@@ -1,0 +1,23 @@
+name: Github Actions Example
+
+on:
+  pull_request:
+  push:
+    branches: 
+      - master
+
+jobs:
+  test:
+    name: Running Units Tests
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Simple Jest Test
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12.x
+    - name: Install
+      run: npm install
+    - name: Test
+      run: npm test
